@@ -1,10 +1,21 @@
 plugins {
     id 'java'
+    id 'pmd'
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
+    mavenLocal()
 }
 
+pmd {
+    toolVersion = "6.39.0"
+    ruleSets = []
+    ruleSetFiles = files("pmd.xml")
+    ignoreFailures = true
+}
+
+
 dependencies {
+    implementation files(fileTree(dir: 'jar_files', includes: ['*.jar']))
 }
